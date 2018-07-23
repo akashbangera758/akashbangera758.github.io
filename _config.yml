@@ -1,0 +1,48 @@
+# Build settings
+permalink: /blog/:year/:title/
+markdown: kramdown
+highlighter: rouge
+plugins: [jekyll-paginate]
+
+paginate: 5
+paginate_path: "/blog/page/:num/"
+comments: false
+
+source: source
+destination: _site
+sass:
+  sass_dir: _sass
+  style: compressed # expanded
+
+# SEO settings
+title: Akash Bangera
+description: "Deep Learning | Machine Learning"
+keywords: "Akash Bangera, Deep Learning, Machine Learning, Artificial Intelligence, Research Papers, Summaries"
+url: http://akashbangera758.github.io
+#baseurl: "/deep-learning-papers-blog"
+
+google_analytics: UA-117489514-1
+#disqus_shortname: abourdon-github-io
+
+# Author settings
+author: 
+  name: Akash Bangera
+  job: Deep Learning Researcher
+#  bio: "Enthusiast performance, responsive design and usability, always looking for the best project and good coffee."
+  thumb: /images/ak.jpg
+  thumb_icon: /images/ak_mini.jpg
+  email: akashbangera758@gmail.com
+  url: http://akashbangera758.github.io
+  github: https://github.com/akashbangera758
+  twitter: https://twitter.com/AkashB58
+  mail: mailto:akashbangera758@gmail.com
+  linkedin: https://linkedin.com/in/akashbangera758
+
+# navbar pages
+navbar:
+  - slug: about
+    title: About
+  - slug: blog
+    title: Blog
+
+exclude: ["Gemfile", "Gemfile.lock", "README.md"]
