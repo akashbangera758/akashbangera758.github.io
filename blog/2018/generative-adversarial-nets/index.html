@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Generative Adversarial Nets</title>
+<meta name="description" content="Link to the paper">
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="canonical" href="http://akashbangera758.github.io/blog/2018/generative-adversarial-nets/">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-117489514-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <input type="checkbox" id="toggleNavbar">
+    <h1 class="logo"><a href="/">Akash <span>Bangera</span></a></h1>
+    <label for="toggleNavbar" role="button" class="toggle-navbar-button">
+      <i class="icon icon-menu"></i>
+      <i class="icon icon-cross"></i>
+    </label>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/" title="Home">Home</a></li>
+        
+          <li><a href="/about" title="About">About</a></li>
+        
+          <li><a href="/blog" title="Blog">Blog</a></li>
+        
+        <li><a href="https://drive.google.com/open?id=1s4X5CEzlL0tkFfFJBgHri_xyj5y_cjEq" title="Resume" target="_blank">Resume</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="main-container">
+  <div class="container">
+    <article role="article" class="post">
+
+  <div class="card">
+    <header class="post-header">
+      <h1 class="post-title">Generative Adversarial Nets</h1>
+      <em class="post-meta">
+        <time>Aug 1, 2018</time>
+      </em>
+    </header>
+
+    <div class="post-content">
+      
+      <p><a href="https://arxiv.org/pdf/1406.2661.pdf" target="_blank">Link to the paper</a></p>
+
+<h2>Contribution</h2>
+<ul>
+    <li>This paper introduces a new generative model that overcomes the difficulties faced by older models like Deep Belief Networks, Variational Autoencoders, etc.</li>
+</ul>
+
+<h2>Background</h2>
+<ul>
+    <li><strong>Multilayer Perceptron Networks</strong>: A multilayer perceptron is a class of feedforward artificial neural network.</li>
+    <li><strong>Backpropagation</strong>: Backpropagation is a method used in artificial neural networks to calculate a gradient that is needed in the calculation of the weights to be used in the network.</li>
+</ul>
+
+<h2>Description</h2>
+<ul>
+    <li>This paper proposes the idea of adversarial training, in which the generative network competes with the discriminative network, which leads to both the networks becoming more efficient in their tasks.</li>
+    <li>The generative network tries to learn a data distribution, and the discriminative network tries to classify between samples from original data and the generative network.</li>
+</ul>
+
+<h2>Methodology</h2>
+<ul>
+    <li>Two multilayer perceptron networks are used as Generator and Discriminator.</li>
+    <li>The generator takes in noise <strong>z</strong> and gives as output a sample <strong>x=G(z)</strong>.</li>
+    <li>Discriminator takes in sample <strong>x</strong> and gives as output a probability <strong>D(x)</strong>.</li>
+    <li><strong>D(x)</strong> represents whether sample <strong>x</strong> came from the generator or original data.</li>
+    <li>Generator tries to maximize the probability of Discriminator making a mistake.</li>
+    <li>Discriminator tries to maximize the probability of assigning correct labels to the samples.</li>
+    <li>Only backpropagation is used for obtaining gradients.</li>
+    <li>After several iterations, the distribution of generated samples will overlap the distribution of original data.</li>
+    <li>At this point, the discriminator fails to classify, giving output <strong>D(x)=1/2</strong>.</li>
+</ul>
+
+<h2>Experiments</h2>
+<ul>
+    <li>The networks were trained on datasets like MNIST, the Toronto Face Database, and CIFAR-10.</li>
+    <li>The authors believe that the results obtained are at least competitive with other models in the literature.</li>
+</ul>
+
+<h2>Areas of Application</h2>
+<ul>
+    <li>Interactive Image Generation</li>
+    <li>Text to Image Generation</li>
+    <li>Image Editing</li>
+    <li>Domain Transfer</li>
+</ul>
+
+<h2>Related Papers</h2>
+<ul>
+    <li><a href="https://arxiv.org/pdf/1511.06434" target="_blank">Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</a></li>
+</ul>
+
+    </div>
+
+<!--    
+-->
+  </div>
+
+</article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <ul class="social">
+  <li><a href="https://github.com/akashbangera758" target="_blank"><i class="icon icon-github"></i></a></li>
+  <li><a href="https://twitter.com/AkashB58" target="_blank"><i class="icon icon-twitter"></i></a></li>
+  <li><a href="mailto:akashbangera758@gmail.com" target="_blank"><i class="icon icon-envelop"></i></a></li>
+  <li><a href="https://linkedin.com/in/akashbangera758" target="_blank"><i class="icon icon-linkedin2"></i></a></li>
+</ul>
+  </div>
+</footer>
+
+
+</body>
+</html>

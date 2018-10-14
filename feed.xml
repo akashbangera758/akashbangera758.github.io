@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Akash Bangera</title>
+    <description>Deep Learning | Machine Learning</description>
+    <link>http://akashbangera758.github.io/</link>
+    <atom:link href="http://akashbangera758.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 14 Oct 2018 15:45:00 +0530</pubDate>
+    <lastBuildDate>Sun, 14 Oct 2018 15:45:00 +0530</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>Learning a Probabilistic Latent Space of Object Shapes via 3D Generative Adversarial Modeling</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://3dgan.csail.mit.edu/papers/3dgan_nips.pdf&quot; target=&quot;_blank&quot;&gt;Link to the paper&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Contribution&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;This paper introduces a new framework called 3DGAN, which generates 3D objects from a probabilistic space using volumetric convolutions and GANs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Generative Adversarial Nets (GAN)&lt;/strong&gt;: &lt;a href=&quot;https://akashbangera758.github.io/blog/2018/generative-adversarial-nets/&quot; target=&quot;_blank&quot;&gt;Refer here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Variational Autoencoder&lt;/strong&gt;: An autoencoder network is actually a pair of two connected networks, an encoder and a decoder. An encoder network takes in an input, and converts it into a smaller, dense representation, which the decoder network can use to convert it back to the original input.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Volumetric Convolutions&lt;/strong&gt;: Convolution layers for 3D input.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Description&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;3D object understanding and generation is an important problem in the graphics and vision community.&lt;/li&gt;
+    &lt;li&gt;With the help of adversarial training, the generator encapsulates the object structure implicitly and then synthesizes high quality 3D objects.&lt;/li&gt;
+    &lt;li&gt;The generator establishes mapping from low dimensional probability space to a space of 3D objects, so that there’s no need of reference models or CAD models for generating 3D objects.&lt;/li&gt;
+    &lt;li&gt;This network, when combined with a variational autoencoder can directly reconstruct a 3D object from a 2D image.&lt;/li&gt;
+    &lt;li&gt;The discriminator provides a powerful 3D shape descriptor which, learned without supervision, has wide applications in 3D object recognition.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Methodology&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;3D-GAN&lt;/li&gt;
+        &lt;ul&gt;
+            &lt;li type=&quot;circle&quot;&gt;In 3D-GAN, a 200 dimensional latent vector &lt;strong&gt;z&lt;/strong&gt;, randomly sampled from a probabilistic latent space, is converted to a 64 x 64 x 64 cube, by the generator &lt;strong&gt;G&lt;/strong&gt;, representing an object &lt;strong&gt;G(z)&lt;/strong&gt; in a 3D voxel space.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;The discriminator &lt;strong&gt;D&lt;/strong&gt; takes in 3D object image &lt;strong&gt;x&lt;/strong&gt; and gives as output a confidence value &lt;strong&gt;D(x)&lt;/strong&gt; of whether the input is real or synthetic.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;Binary cross entropy is used as the loss function.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;The discriminator usually learns faster, and this makes it hard for the generator to improve, as all samples it generates are correctly identified as synthetic with high confidence.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;Therefore, to keep the training of both networks in pace, for each batch, the discriminator is updated only if its accuracy in the previous batch is less than 80%.&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;li&gt;3D-VAE-GAN&lt;/li&gt;
+        &lt;ul&gt;
+            &lt;li type=&quot;circle&quot;&gt;The 3D-VAE-GAN consists of three components: an image encoder &lt;strong&gt;E&lt;/strong&gt;, a generator &lt;strong&gt;G&lt;/strong&gt;, and a discriminator &lt;strong&gt;D&lt;/strong&gt;.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;The image encoder &lt;strong&gt;E&lt;/strong&gt; takes 2D image as input and outputs the latent representation vector &lt;strong&gt;z&lt;/strong&gt;.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;Further operations are similar to that of 3D-GAN.&lt;/li&gt;
+            &lt;li type=&quot;circle&quot;&gt;The loss function consists of three parts: an object reconstruction loss &lt;strong&gt;L&lt;sub&gt;recon&lt;/sub&gt;&lt;/strong&gt;, a cross entropy loss &lt;strong&gt;L&lt;sub&gt;3D-GAN&lt;/sub&gt;&lt;/strong&gt;, and a KL diversion loss &lt;strong&gt;L&lt;sub&gt;KL&lt;/sub&gt;&lt;/strong&gt;.&lt;/li&gt;
+        &lt;/ul&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Areas of Application&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;3D Object Generation&lt;/li&gt;
+    &lt;li&gt;3D Object Classification&lt;/li&gt;
+    &lt;li&gt;Single Image 3D Reconstruction&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Related Papers&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1711.06375.pdf&quot; target=&quot;_blank&quot;&gt;Shape Inpainting using 3D Generative Adversarial Network and Recurrent Convolutional Networks&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1707.09557.pdf&quot; target=&quot;_blank&quot;&gt;Improved Adversarial Systems for 3D Object Generation and Reconstruction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1805.00328.pdf&quot; target=&quot;_blank&quot;&gt;3D-PhysNet: Learning the Intuitive Physics of Non-Rigid Object Deformations&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf&quot; target=&quot;_blank&quot;&gt;https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 14 Oct 2018 00:00:00 +0530</pubDate>
+        <link>http://akashbangera758.github.io/learning-a-probabilistic-latent-space-of-object-shapes-via-3d-generative-adversarial-modeling</link>
+        <guid isPermaLink="true">http://akashbangera758.github.io/learning-a-probabilistic-latent-space-of-object-shapes-via-3d-generative-adversarial-modeling</guid>
+        
+        
+        <category>summary</category>
+        
+      </item>
+    
+      <item>
+        <title>Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1511.06434.pdf&quot; target=&quot;_blank&quot;&gt;Link to the paper&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Contribution&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;This paper introduces a version of GAN called Deep Convolutional Generative Adversarial Networks (DCGAN), which are stable to train in most settings.&lt;/li&gt;
+    &lt;li&gt;This paper also showed that the generators have vector arithmetic properties which allows for easy image manipulation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Generative Adversarial Nets (GAN)&lt;/strong&gt;: &lt;a href=&quot;https://akashbangera758.github.io/blog/2018/generative-adversarial-nets/&quot; target=&quot;_blank&quot;&gt;Refer here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Convolutional Neural Network&lt;/strong&gt;: A convolutional neural network (CNN) is a class of deep, feed-forward artificial neural networks, most commonly applied to analyzing visual imagery.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Batch Normalization&lt;/strong&gt;: Batch normalization helps stabilize learning by normalizing the inputs to each unit to have zero mean and unit variance.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;ReLU Activation&lt;/strong&gt;: ReLU (Rectified Linear Unit) is an activation function where f(x)=0 for x&amp;lt;0 and f(x)=x for x&amp;gt;=0.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;LeakyReLU Activation&lt;/strong&gt;: LeakyReLU is an activation function where f(x)=&amp;alpha;x for x&amp;lt;0 and f(x)=x for x&amp;gt;=0. Here &amp;alpha; is called leak and it helps increase the range of ReLU function.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Dropout&lt;/strong&gt;: Dropout refers to dropping out units from layers in the neural network. This is done for reducing overfitting in neural networks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Description&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Previous attempts to improve the performance of GANs to model images, using CNNs were unsuccessful.&lt;/li&gt;
+    &lt;li&gt;This paper tells us about the various layers and activations used by the authors in their network, for successfully modelling image distributions.&lt;/li&gt;
+    &lt;li&gt;The various settings and hyperparameters used by the authors, and their effects on the result, are also mentioned in the paper.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Methodology&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;A uniform noise distribution &lt;strong&gt;z&lt;/strong&gt; is fed into the first layer of generator, which can be a fully connected layer.&lt;/li&gt;
+    &lt;li&gt;This layer is used for matrix multiplication, and the result is reshaped into a 4-dimensional vector.&lt;/li&gt;
+    &lt;li&gt;For the discriminator, the last layer is flattened and then fed into a single sigmoid output.&lt;/li&gt;
+    &lt;li&gt;Pooling layers are replaced with strided convolutions for discriminator, and with fractional-strided convolutionals for generator.&lt;/li&gt;
+    &lt;li&gt;To prevent mode collapse, Batch Normalization has been used.&lt;/li&gt;
+    &lt;li&gt;Batch Normalization is not applied to the output layer of generator and the input layer of discriminator, as it may lead to sample oscillations and also model instability.&lt;/li&gt;
+    &lt;li&gt;The generator uses ReLU activations for all layers except the output, which uses Tanh.&lt;/li&gt;
+    &lt;li&gt;The discriminator uses LeakyReLU activations for all layers.&lt;/li&gt;
+    &lt;li&gt;Dropout was used to decrease the likelihood of memorization.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Experiments&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;DCGANs were trained on three datasets, Large Scale Scene Understanding (LSUN), Imagenet-1K, and assembled Faces dataset.&lt;/li&gt;
+    &lt;li&gt;All images were scaled to the range of tanh activation function [-1, 1].&lt;/li&gt;
+    &lt;li&gt;Mini-batch Stochastic Gradient Descent (SGD) was used for training, with minibatch size of 128.&lt;/li&gt;
+    &lt;li&gt;Weights were initialized with zero-centered Normal distribution with standard deviation of 0.02.&lt;/li&gt;
+    &lt;li&gt;The slope of leak was set to 0.2 in LeakyReLU.&lt;/li&gt;
+    &lt;li&gt;Adam Optimizer was used for accelerating the training process.&lt;/li&gt;
+    &lt;li&gt;Learning rate was set to 0.0002 and the momentum term &amp;beta; was set to 0.5 for stabilizing training.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Areas of Application&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Generation of higher resolution images&lt;/li&gt;
+    &lt;li&gt;Vector arithmetic can be performed on images in Z space to get results like &lt;strong&gt;man with glasses - normal man + normal woman = woman with glasses&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;The use of vector arithmetic could decrease the amount of data needed for modelling complex image distributions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Related Papers&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1406.2661.pdf&quot; target=&quot;_blank&quot;&gt;Generative Adversarial Nets&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 02 Sep 2018 00:00:00 +0530</pubDate>
+        <link>http://akashbangera758.github.io/blog/2018/unsupervised-representation-learning-with-deep-convolutional-generative-adversarial-networks/</link>
+        <guid isPermaLink="true">http://akashbangera758.github.io/blog/2018/unsupervised-representation-learning-with-deep-convolutional-generative-adversarial-networks/</guid>
+        
+        
+        <category>summary</category>
+        
+      </item>
+    
+      <item>
+        <title>Generative Adversarial Nets</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1406.2661.pdf&quot; target=&quot;_blank&quot;&gt;Link to the paper&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Contribution&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;This paper introduces a new generative model that overcomes the difficulties faced by older models like Deep Belief Networks, Variational Autoencoders, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Multilayer Perceptron Networks&lt;/strong&gt;: A multilayer perceptron is a class of feedforward artificial neural network.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Backpropagation&lt;/strong&gt;: Backpropagation is a method used in artificial neural networks to calculate a gradient that is needed in the calculation of the weights to be used in the network.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Description&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;This paper proposes the idea of adversarial training, in which the generative network competes with the discriminative network, which leads to both the networks becoming more efficient in their tasks.&lt;/li&gt;
+    &lt;li&gt;The generative network tries to learn a data distribution, and the discriminative network tries to classify between samples from original data and the generative network.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Methodology&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Two multilayer perceptron networks are used as Generator and Discriminator.&lt;/li&gt;
+    &lt;li&gt;The generator takes in noise &lt;strong&gt;z&lt;/strong&gt; and gives as output a sample &lt;strong&gt;x=G(z)&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;Discriminator takes in sample &lt;strong&gt;x&lt;/strong&gt; and gives as output a probability &lt;strong&gt;D(x)&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;D(x)&lt;/strong&gt; represents whether sample &lt;strong&gt;x&lt;/strong&gt; came from the generator or original data.&lt;/li&gt;
+    &lt;li&gt;Generator tries to maximize the probability of Discriminator making a mistake.&lt;/li&gt;
+    &lt;li&gt;Discriminator tries to maximize the probability of assigning correct labels to the samples.&lt;/li&gt;
+    &lt;li&gt;Only backpropagation is used for obtaining gradients.&lt;/li&gt;
+    &lt;li&gt;After several iterations, the distribution of generated samples will overlap the distribution of original data.&lt;/li&gt;
+    &lt;li&gt;At this point, the discriminator fails to classify, giving output &lt;strong&gt;D(x)=1/2&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Experiments&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;The networks were trained on datasets like MNIST, the Toronto Face Database, and CIFAR-10.&lt;/li&gt;
+    &lt;li&gt;The authors believe that the results obtained are at least competitive with other models in the literature.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Areas of Application&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Interactive Image Generation&lt;/li&gt;
+    &lt;li&gt;Text to Image Generation&lt;/li&gt;
+    &lt;li&gt;Image Editing&lt;/li&gt;
+    &lt;li&gt;Domain Transfer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Related Papers&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1511.06434&quot; target=&quot;_blank&quot;&gt;Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 01 Aug 2018 00:00:00 +0530</pubDate>
+        <link>http://akashbangera758.github.io/blog/2018/generative-adversarial-nets/</link>
+        <guid isPermaLink="true">http://akashbangera758.github.io/blog/2018/generative-adversarial-nets/</guid>
+        
+        
+        <category>summary</category>
+        
+      </item>
+    
+  </channel>
+</rss>
